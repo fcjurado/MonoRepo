@@ -26,6 +26,12 @@ jobs:
     - name: CI/CD
       run: |
         pwd
-        echo 'Micros/${{ matrix.microservice }}'
-        cd Micros/${{ matrix.microservice }}
-        sh ./test.sh
+        if [[ -n "${{ matrix.microservice }}" ]]; then
+          echo 'cd Micros/${{ matrix.microservice }}'
+          cd Micros/${{ matrix.microservice }}
+          sh ./test.sh
+        else
+          echo "No folder changed"
+        fi
+        
+        
