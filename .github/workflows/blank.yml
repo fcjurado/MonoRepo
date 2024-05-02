@@ -25,7 +25,7 @@ jobs:
         echo "$changed_microservices"
         echo "matrix=${changed_microservices}" >> $GITHUB_ENV
 
-    - name: CI/CD
+    - name: Deploy
       run: |
         pwd
         if [[ -n "${{ env.matrix }}" && "${{ env.matrix }}" != "workflows" ]]; then
@@ -33,7 +33,7 @@ jobs:
           cd Micros/${{ env.matrix }}
           sh ./test.sh
         else
-          echo "No folder changed"
+          echo "No microservice change detected"
         fi
         
         
