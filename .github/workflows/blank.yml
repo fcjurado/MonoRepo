@@ -23,14 +23,14 @@ jobs:
         changed_microservices=$(echo '${{ steps.changed-files.outputs.all_modified_files }}' | tr ' ' '\n' | cut -d/ -f2 | uniq)
         echo '${{ steps.changed-files.outputs.all_modified_files }}' | tr ' ' '\n' | cut -d/ -f2 | uniq
         echo "$changed_microservices"
-        echo "::set-output name=matrix::$(echo "$changed_microservices" | jq -R -s -c 'split("\n")')"
+        echo "matrix=${changed_microservices}" >> $GITHUB_ENV
 
     - name: CI/CD
       run: |
         pwd
-        if [[ -n "${{ matrix.microservice }}" ]]; then
-          echo 'cd Micros/${{ matrix.microservice }}'
-          cd Micros/${{ matrix.microservice }}
+        if [[ -n "${{ env.matrix }}" ]]; then
+          echo 'cd Micros/${{ env.matrix }}'
+          cd Micros/${{ env.matrix }}
           sh ./test.sh
         else
           echo "No folder changed"
