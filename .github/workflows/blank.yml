@@ -26,4 +26,4 @@ jobs:
     - name: CI/CD
       run: |
         cd Micros/${{ matrix.microservice }}
-        bash ci-cd.sh
+        bash test.sh
