@@ -1,4 +1,4 @@
-echo "hello I am Microservice2"
+echo "hello I am Microservice 2"
 
 sleep 10
 
