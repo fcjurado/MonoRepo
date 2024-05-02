@@ -24,6 +24,6 @@ jobs:
         echo "::set-output name=matrix::$(echo "$changed_microservices" | jq -R -s -c 'split("\n")')"
 
     - name: CI/CD
-      uses: ./.github/workflows/ci-cd.yml
-      with:
-        microservice: ${{ matrix.microservice }}
+      run: |
+        cd Micros/${{ matrix.microservice }}
+        bash ci-cd.sh
