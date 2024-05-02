@@ -1,4 +1,4 @@
-echo "hello I am Microservice 1"
+echo "hello I am Microservice 1 One"
 
 echo "Test 1"
 
