@@ -28,5 +28,4 @@ jobs:
         pwd
         echo 'Micros/${{ matrix.microservice }}'
         cd Micros/${{ matrix.microservice }}
-        pwd
-        bash test.sh
+        sh ./test.sh
