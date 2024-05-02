@@ -28,7 +28,7 @@ jobs:
     - name: CI/CD
       run: |
         pwd
-        if [[ -n "${{ env.matrix }}" ]]; then
+        if [[ -n "${{ env.matrix }}" && "${{ env.matrix }}" != "workflows" ]]; then
           echo 'cd Micros/${{ env.matrix }}'
           cd Micros/${{ env.matrix }}
           sh ./test.sh
