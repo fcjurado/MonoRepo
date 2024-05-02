@@ -21,6 +21,8 @@ jobs:
       id: set-up-matrix
       run: |
         changed_microservices=$(echo '${{ steps.changed-files.outputs.all_modified_files }}' | tr ' ' '\n' | cut -d/ -f2 | uniq)
+        echo '${{ steps.changed-files.outputs.all_modified_files }}' | tr ' ' '\n' | cut -d/ -f2 | uniq
+        echo "$changed_microservices"
         echo "::set-output name=matrix::$(echo "$changed_microservices" | jq -R -s -c 'split("\n")')"
 
     - name: CI/CD
