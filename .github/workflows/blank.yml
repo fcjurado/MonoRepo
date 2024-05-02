@@ -27,6 +27,3 @@ jobs:
       uses: ./.github/workflows/ci-cd.yml
       with:
         microservice: ${{ matrix.microservice }}
-      strategy:
-        matrix:
-          microservice: ${{ fromJson(steps.set-up-matrix.outputs.matrix) }}
